@@ -2,32 +2,28 @@ import streamlit as st
 import pandas as pd
 import random
 
-# Page setup
 st.set_page_config(
     page_title="Student Marks Card",
-    page_icon="🎓",
-    layout="centered"
+    page_icon="🎓"
 )
 
-# Grade function
-def get_grade(mark):
+
+def grade(mark):
     if mark >= 90:
         return "A+"
-    elif mark >= 80:
+    if mark >= 80:
         return "A"
-    elif mark >= 70:
+    if mark >= 70:
         return "B+"
-    elif mark >= 60:
+    if mark >= 60:
         return "B"
-    elif mark >= 50:
+    if mark >= 50:
         return "C"
-    elif mark >= 35:
+    if mark >= 35:
         return "D"
-    else:
-        return "F"
+    return "F"
 
 
-# Student names
 names = [
     "Rahul Sharma",
     "Sanjay Kumar",
@@ -52,14 +48,12 @@ names = [
 ]
 
 
-# Create random dataset
-random.seed(10)
+random.seed(100)
 
-data = []
+rows = []
 
 for roll in range(1, 21):
-
-    data.append({
+    rows.append({
         "Roll No": roll,
         "Name": names[roll - 1],
         "English": random.randint(35, 100),
@@ -70,12 +64,8 @@ for roll in range(1, 21):
     })
 
 
-df = pd.DataFrame(data)
+df = pd.DataFrame(rows)
 
-
-# -----------------------------
-# WELCOME PAGE
-# -----------------------------
 
 st.title("🎓 Welcome to Shrikant and Pramod AIML Project")
 
@@ -84,8 +74,5 @@ st.markdown("---")
 st.header("📚 Student Marks Card Analysis")
 
 st.write(
-    "Welcome to our Student Marks Card Analysis project."
+    "Enter a roll number from 1 to 20 to view the marks card."
 )
-
-st.write(
-    "Enter
